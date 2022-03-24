@@ -10,12 +10,14 @@ class LoginController extends Controller
         //return '<h1>Hello!!!</h1>';
         // echo $this->cookies->has('remeber-me');
         // die();
+        // print_r($this->cookies->get('remember-me')->getValue());
+        // die();
         if ($this->cookies->has('remember-me')) {
             $data = $this->cookies->get('remember-me')->getValue();
             $data = json_decode($data);
             // print_r($data);
             // die();
-            $this->response->redirect('/dashboard');
+             $this->response->redirect('/dashboard');
         }
     }
 
@@ -59,6 +61,7 @@ class LoginController extends Controller
                // $cookies  = new Cookies();
 
                 $response->setCookies($cookie);
+                $response->send();
                 // print_r($this->cookies->get('remember-me')->getValue());
                 // die();
             }
